@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('includes/index-navigation.ejs') %>
+
+   <main>
+     <div id="home" class="intro route bg-image" style="background-image: url(img/login.jpg)">
+      <div class="wrapper fadeInDown">
+ 
+                <div id="formContent">
+                  <!-- Tabs Titles -->
+                  <h2 class="inactive"><a href="/logIn">Log In</a></h2>
+                  <h2 class="active underlineHover"><a href="/signUp">Sign Up</a></h2> 
+              
+                  <!-- Icon -->
+                  <div class="fadeIn first">
+                    <img src="https://www.tripuragraminbank.org/tgb/images/user-login.png" id="icon" alt="User Icon" />
+                  </div>
+              
+                  <!-- Login Form -->
+                  <form action="/signUp" method="POST">
+                    <% if (errorMessage) { %>
+                      <div class="user-message user-message--error"><%= errorMessage %></div>
+                  <% } %>
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                    <input type="password" id="checkPassword" class="fadeIn third" name="confirmPassword" placeholder="confirm password">
+                    <input type="submit" class="fadeIn fourth" value="Sign Up">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  </form>
+              
+                  <!-- Remind Passowrd -->
+                  <div id="formFooter">
+                    <a class="underlineHover" href="/login">Forgot Password?</a>
+                  </div>
+              
+                </div>
+              </div>
+        </div>
+    </main>
+<%- include('includes/end.ejs') %>

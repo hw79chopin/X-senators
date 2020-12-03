@@ -1,0 +1,94 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/auth.css">
+    
+</head>
+<body id="top">
+    <div class="Wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left"> 
+          <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+        </div>
+  
+        <%- include('../includes/navigation.ejs') %>
+  
+      </header>
+    </div>
+    </div>
+    <main>
+      <div class="bgded" class="intro route bg-image" style="background-image: url(img/login.jpg)">
+        <div class="authWrapper fadeInDown">
+          <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"><a href="/logIn">Log In</a></h2>
+            <h2 class="inactive underlineHover"><a href="/signUp">Sign Up</a></h2> 
+            
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="https://www.tripuragraminbank.org/tgb/images/user-login.png" id="icon" alt="User Icon" />
+            </div>
+            
+            <!-- Login Form -->
+            <form action="/logIn" method="POST">
+              <!-- <if (errorMessage) { %>
+                <div class="user-message user-message--error"><= errorMessage %></div> -->
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                    <!-- <input type="hidden" name="_csrf" value="<= csrfToken %>"> -->
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                  </form>
+              
+                  <!-- Remind Passowrd -->
+                  <div id="formFooter">
+                    <a class="underlineHover" href="/login">Forgot Password?</a>
+                  </div>
+              
+                </div>
+              </div>
+        </div>
+    </main>
+    </div>
+    
+    <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');">
+      <section class="hoc container clear"> 
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+          <p class="nospace font-xs">Orci suspendisse lorem mauris</p>
+          <h6 class="heading font-x2">Ligula est auctor vitae pretium</h6>
+        </div>
+        <ul class="nospace group sd-third">
+          <li class="one_quarter first">
+            <article>
+              <h6 class="heading">Eget hendrerit</h6>
+              <p class="btmspace-30">Eu mauris aenean purus integer varius erat a sapien aliquam bibendum eleifend enim integer et orci proin egestas praesent.</p>
+              <footer><a class="btn" href="#">Read More</a></footer>
+            </article>
+          </li>
+          <li class="one_quarter">
+            <article class="center"><a class="imgover btmspace-30" href="#"><img src="images/demo/348x261.png" alt=""></a>
+              <p class="font-xs nospace">Tincidunt</p>
+              <p class="heading">John Doe</p>
+            </article>
+          </li>
+          <li class="one_quarter">
+            <article class="center"><a class="imgover btmspace-30" href="#"><img src="images/demo/348x261.png" alt=""></a>
+              <p class="font-xs nospace">Aenean</p>
+              <p class="heading">Jim Doe</p>
+            </article>
+          </li>
+          <li class="one_quarter">
+            <article class="center"><a class="imgover btmspace-30" href="#"><img src="images/demo/348x261.png" alt=""></a>
+              <p class="font-xs nospace">Turpis</p>
+              <p class="heading">Jane Doe</p>
+            </article>
+          </li>
+        </ul>
+        <!-- ################################################################################################ -->
+      </section>
+    </div>
+    
+</body>
+<%- include('../includes/end.ejs') %>
