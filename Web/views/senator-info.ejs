@@ -1,0 +1,159 @@
+<%- include('includes/head.ejs') %>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+<style>
+h3 {
+  /* border-width: 2px;
+  border-radius: 25px;
+  border-color: gray; */
+  width: 90%;
+  /* border-style: solid; */
+  padding: 5px;
+  margin-left: 50px; /* change this as you like */
+}
+
+.center {
+  margin-left: 4%;
+}
+
+.center-donate {
+  margin-left: 30%;
+}
+
+</style>
+</head>
+<body id="top">
+  <div class="bgded" style="background-image:url('img/뱃지.jpg');"> 
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left"> 
+        <!-- ################################################################################################ -->
+        <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+
+<%- include('includes/navigation.ejs') %>
+    </header>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="breadcrumb" class="hoc clear"> 
+  </div>
+</div>
+
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      <!-- ################################################################################################ -->
+      <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Emblem_of_the_National_Assembly_of_Korea.svg/200px-Emblem_of_the_National_Assembly_of_Korea.svg.png" alt="">
+      <div class='imgr inspace-5'>
+        <img class="imgr borderedbox inspace-5" src="<%= senatorInfo['URL'] %> " alt="">
+        <footer>
+            <p><a class="btn center-donate" href="/sponsor-senator/<%= senatorInfo['id']%>">후원하기</a></p>
+          </ul>
+        </footer>
+      </div>
+      <h1 class = "nanumGothic-black-title"><%= senatorInfo['NAME'] %>(<%= senatorInfo['NAME_HAN'] %>) 의원</h1>
+      
+      <br>
+      <br>
+
+      <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+      <h1 class = "nanumGothic-black-title">정당</h1>
+      <h3 class="nanumGothic-black-content"><%= senatorInfo['PARTY'] %></h3>
+      <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+      <h1 class = "nanumGothic-black-title">생년월일</h1>
+      <h3 class="nanumGothic-black-content"><%= senatorInfo['BIRTH'] %></h3>
+      <% if (senatorInfo['HAK'])  { %>
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">학력사항 및 경력</h1>
+        <% for ( let hak of senatorInfo['HAK'].split(',')) { %> 
+          <h3 class="nanumGothic-black-content"><%= hak %></h3>
+        <% } %> 
+      <% } %> 
+
+      <% if (senatorInfo['BON'])  { %>
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">본관</h1>
+        <h3 class="nanumGothic-black-content"><%= senatorInfo['BON'] %></h3>
+      <% } %>   
+      
+      <% if (senatorInfo['POSI'])  { %>
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">출생지</h1>
+        <h3 class="nanumGothic-black-content"><%= senatorInfo['POSI'] %></h3>
+      <% } %>   
+
+      <% if (senatorInfo['HOBBY'])  { %>
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">취미</h1>
+        <h3 class="nanumGothic-black-content"><%= senatorInfo['HOBBY'] %></h3>
+      <% } %> 
+
+      <% if (senatorInfo['BOOK'])  { %>
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">저서</h1>
+        <h3 class="nanumGothic-black-content"><%= senatorInfo['BOOK'] %></h3>
+      <% } %> 
+
+      <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+      <h1 class = "nanumGothic-black-title">국회의원 이력</h1>
+      
+      <div class="scrollable">
+        <table class = "center">
+          <thead>
+            <tr>
+              <th>국회 기수</th>
+              <th>출마지</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for ( let dae of senatorInfo['DAE'].split(/(정당_)+\d+/) )  { %>
+            <tr>
+              <td><%= dae.match(/제\d+대/) %> </a></td>
+              <td><%= dae.match(/\(([^\)]+)\)/)%> </a></td>
+            </tr>
+          <% } %> 
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <div id="comments">
+        <img class="imgl borderedbox inspace-5" style= "border-style: none;" width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" alt="">
+        <h1 class = "nanumGothic-black-title">대표 발의법안</h1>
+        <ul>
+          <% for (var bill of bills) { %>
+            <li>
+              <article>
+                <header>
+                  <address>
+                  By <a href="#"><%= senatorInfo['NAME'] %> </a>
+                  </address>
+                  <p>발의일자: <%= bill['PROPOSE_DT'] %> </p>
+                  <p>법안명: <%= bill['BILL_NAME'] %> </p>
+                </header>
+                <div class="comcont">
+                  <p > <%= bill['bill_content'] %> </p>
+                </div>
+              </article>
+            </li>
+          <% } %> 
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<%- include('includes/end.ejs') %>

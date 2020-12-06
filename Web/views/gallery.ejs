@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+
+<style>
+.center { 
+  text-align: center;
+}
+
+</style>
+</head>
+<body id="top">
+<div class="bgded" style="background-image:url('img/뱃지.jpg');"> 
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left"> 
+        <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+      </div>
+
+      <%- include('includes/navigation.ejs') %>
+
+    </header>
+  </div>
+  <div id="breadcrumb" class="hoc clear"> 
+    <h6 class="heading"></h6>
+    </ul> -->
+  </div>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
+      <div id="gallery">
+        <figure>
+          <header class="heading center" style="font-size: 50px;font-family: 'Nanum Pen Script', cursive;">21대 국회의원들</header>
+          <ul class="nospace clear">
+            <% if (senatorsInfo.length > 0)  { %>
+              <% for(var i = 0; i < senatorsInfo.length; i++){ %>
+                <% if (i%4 == 0) { %> 
+                <li class="one_quarter first nanumGothic-black"><a href="/senator-info/<%= senatorsInfo[i]['id'] %>"><img src=<%= senatorsInfo[i]['URL']%> height="380" width="280" alt=""></a><%=senatorsInfo[i]['NAME'] %> 의원</li>
+                <% } else { %> 
+                  <li class="one_quarter nanumGothic-black"><a href="/senator-info/<%= senatorsInfo[i]['id'] %>"><img src=<%= senatorsInfo[i]['URL']%> height="380" width="280" alt=""></a><%=senatorsInfo[i]['NAME'] %> 의원</li>
+              <% } %> 
+            <% } %> 
+            <% } %> 
+          </ul>
+        </figure>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>
+<%- include('includes/end.ejs') %>

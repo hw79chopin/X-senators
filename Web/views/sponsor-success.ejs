@@ -1,0 +1,40 @@
+<%- include('includes/head.ejs') %>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/sponsor.css" rel="stylesheet" type="text/css" media="all">
+<link href="/js/sponsor.js" media="all">
+<link href="/css/thanks.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body id="top">
+  
+    <div class="bgded" style="background-image:url('img/뱃지.jpg');"> 
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left"> 
+          <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+        </div>
+  
+  <%- include('includes/navigation.ejs') %>
+      </header>
+    </div>
+    <div id="pageintro" class="hoc clear"> 
+      <article>
+        <p class="nanumPen" style="color:black; font-size: 60px;" >성공적으로 후원하였습니다. 감사합니다!</p>
+        <h3 class="heading"></h3>
+        <footer>
+          <ul class="nospace inline pushright">
+            <li><a style="color:black" class="btn poor" href="/userInput">추천 다시 해보기</a></li>
+            <li><a  style="color:black" class="btn poor" href="/">메인화면</a></li>
+          </ul>
+        </footer>
+      </article>
+    </div>
+  </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://raw.githubusercontent.com/jerryluk/jquery.autogrow/master/jquery.autogrow-min.js"></script>
+  
+  <%- include('includes/end.ejs') %>

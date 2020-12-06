@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/auth.css">
+    
+</head>
+<body id="top">
+    <div class="Wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left"> 
+          <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+        </div>
+  
+        <%- include('../includes/navigation.ejs') %>
+  
+      </header>
+    </div>
+    </div>
+    <main>
+      <div class="bgded" class="intro route bg-image" style="background-image: url(img/login.jpg)">
+        <div class="authWrapper fadeInDown">
+          <div id="formContent">
+            <h2 class="active"><a href="/logIn">Log In</a></h2>
+            <h2 class="inactive underlineHover"><a href="/signUp">Sign Up</a></h2> 
+            <div class="fadeIn first">
+              <img src="https://www.tripuragraminbank.org/tgb/images/user-login.png" id="icon" alt="User Icon" />
+            </div>
+            <form action="/logIn" method="POST">
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                  </form>
+              
+                  <div id="formFooter">
+                    <a class="underlineHover" href="/login">Forgot Password?</a>
+                  </div>
+              
+                </div>
+              </div>
+        </div>
+    </main>
+    </div>
+    
+<%- include('../includes/end.ejs') %>

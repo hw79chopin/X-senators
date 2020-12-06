@@ -1,0 +1,14 @@
+<nav id="mainav" class="fl_right"> 
+    <ul class="clear">
+      <li class="<%= path === '/index' ? 'poor active' : 'poor' %>"><a href="/"> 메인화면 </a></li>
+      <li class="<%= path === '/userInput' ? 'poor active' : 'poor' %>"><a href="/userInput">나의 국회의원은?</a></li>
+      <li class="<%= path === '/gallery' ? 'poor active' : 'poor' %>"><a href="/gallery">국회의원 둘러보기</a></li>
+      <% if (!isAuthenticated) { %> 
+        <li class="<%= path === '/logIn' ? 'poor active' : 'poor' %>"><a href="/login">로그인</a></li>
+      <% } else { %>
+        <li class="<%= path === '/logOut' ? 'poor active' : 'poor' %>"><a href="/logOut">로그아웃</a></li>
+    <% } %> 
+
+
+    </ul>
+  </nav>

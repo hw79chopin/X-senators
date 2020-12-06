@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body id="top">
+<!-- Top Background Image Wrapper -->
+<div class="bgded" style="background-image:url('img/뱃지.jpg');"> 
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left"> 
+        <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+      </div>
+
+      <%- include('includes/navigation.ejs') %>
+
+    </header>
+  </div>
+  <div id="breadcrumb" class="hoc clear"> 
+  </div>
+</div>
+
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
+      <div id="gallery">
+        <figure>
+          <header style="text-align: center;" class="poor-black">나의 관심사와 가장 유사한 국회의원 Top 8</header>
+          <div class="authWrapper">
+
+            <ul class="nospace clear">
+              <% if (senators.length > 0)  { %>
+                <% for(var i = 0; i < senators.length; i++){ %>
+                  <% if (i%4 == 0) { %> 
+                  <li class="one_quarter first nanumGothic-black"><a href="/senator-info/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
+                  <% } else { %> 
+                    <li class="one_quarter nanumGothic-black"><a href="/senator-info/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
+                <% } %> 
+              <% } %> 
+              <% } %> 
+                </div>
+          </ul>
+          
+        </figure>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>
+<%- include('includes/end.ejs') %>

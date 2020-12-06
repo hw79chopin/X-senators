@@ -1,0 +1,115 @@
+<%- include('includes/head.ejs') %>
+<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/framework.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/all.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/search.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body id="top">
+<div class="bgded" style="background-image:url('img/물음표.png')"> 
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left"> 
+        <h1 class="logoname"><a href="/">X-<span>senators</span></a></h1>
+      </div>
+
+      <%- include('includes/navigation.ejs') %>
+
+    </header>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="pageintro" class="hoc clear"> 
+    <article>
+      <p style="color: black; font-family: 'Poor Story', cursive; font-size: 60px;">관심사를 입력해주세요</p>
+      <h4 style="color:black; font-family: 'Poor Story', cursive; font-size: 30px;">'/'를 기준으로 관심사를 나눠주세요</h4>
+      <div class="searchWrap">
+        <div class="search">
+          <form class="search" action="/add-user-interest" method="POST">
+           <input type="text" name="userInput" class="searchTerm" placeholder="예) 창업/중소기업/교육/국가유공자">
+           <!-- <input type="hidden" name="userId" value="<= userId %> "> -->
+           <button type="submit" class="searchButton">
+             <img src="https://lh3.googleusercontent.com/proxy/n3p6C-3Uyi7vmtRky857wlS_XnVw2v_LBGQ8Q94F_SQl6_FPcMu_1olgcahyyc663t-PhkLy55qe6q5ArizhMNKeKaVeMjI5t3x_pyW0628-Pve4BQsH"></i>
+          </button>
+        </form>
+        </div>
+      </div>
+      <!-- <footer>
+        <ul class="nospace inline pushright">
+          <li><a class="btn" href="#">Suspendisse</a></li>
+          <li><a class="btn inverse" href="#">Venenatis</a></li>
+        </ul>x -->
+      </footer>
+    </article>
+  </div>
+</div>
+<div class="wrapper row3" style="background-image:url('img/물음표.png');">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+      <div class="one_half first">
+      </div>
+      <div class="one_half">
+        <ul class="nospace group">
+          <li class="one_half first btmspace-30">
+          </li>
+          <li class="one_half btmspace-30">
+          </li>
+          <li class="one_half first">
+          </li>
+          <li class="one_half">
+          </li>
+        </ul>
+      </div>
+    <!-- ################################################################################################ -->
+    <section id="services">
+      <div class="sectiontitle">
+      </div>
+      <ul class="nospace group">
+        </li>
+      </ul>
+    </section>
+    <section id="services">
+      <div class="sectiontitle">
+      </div>
+      <ul class="nospace group">
+        </li>
+      </ul>
+    </section>
+      <div class="one_half first">
+      </div>
+      <div class="one_half">
+        <ul class="nospace group">
+          <li class="one_half first btmspace-30">
+          </li>
+          <li class="one_half btmspace-30">
+          </li>
+          <li class="one_half first">
+          </li>
+          <li class="one_half">
+          </li>
+        </ul>
+      </div>
+    <!-- ################################################################################################ -->
+    <section id="services">
+      <div class="sectiontitle">
+      </div>
+      <ul class="nospace group">
+        </li>
+      </ul>
+    </section>
+    <section id="services">
+      <div class="sectiontitle">
+      </div>
+      <ul class="nospace group">
+        </li>
+      </ul>
+    </section>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+<%- include('includes/end.ejs') %>
