@@ -35,9 +35,9 @@
               <% if (senators.length > 0)  { %>
                 <% for(var i = 0; i < senators.length; i++){ %>
                   <% if (i%4 == 0) { %> 
-                  <li class="one_quarter first nanumGothic-black"><a href="/senator-info/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
+                  <li class="one_quarter first nanumGothic-black"><a href="/senator-info-similar-bills/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
                   <% } else { %> 
-                    <li class="one_quarter nanumGothic-black"><a href="/senator-info/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
+                    <li class="one_quarter nanumGothic-black"><a href="/senator-info-similar-bills/<%= senators[i]['id'] %>"><img src=<%= senators[i]['URL']%> height="380" width="280" alt=""></a><%=senators[i]['NAME'] %> 의원 (<%= similarity[senators[i]['id']] %>)</li>
                 <% } %> 
               <% } %> 
               <% } %> 

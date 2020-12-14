@@ -6,6 +6,7 @@ const sequelize = require('./util/database');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const errorController = require('./controllers/error');
 const SessionStore = require('express-session-sequelize')(expressSession.Store);
 const sequelizeSessionStore = new SessionStore({
   db: sequelize,
@@ -16,6 +17,11 @@ const sequelizeSessionStore = new SessionStore({
 const User = require('./models/user');
 const UserInterest = require('./models/userInterest');
 const Senator = require('./models/Senator');
+const Bill = require('./models/bill');
+const BillsProposer = require('./models/billsProposer');
+const RecommendResult = require('./models/recommendResult');
+const RecommendSenator = require('./models/recommendSenator');
+const SponSenator = require('./models/sponSenator');
 
 // Setting App
 const app = express();
@@ -64,13 +70,15 @@ app.use((req, res, next) => {
 // Routers
 app.use(mainRoutes);
 app.use(authRoutes);
+app.use(errorController.get404);
 
 // Setting relations
 // Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 // User.hasMany(Product);
 // User.hasOne(Cart);
 // Cart.belongsTo(User);
-// Cart.belongsToMany(Product, { through: CartItem });
+// RecommendSenator.belongsTo(RecommendResult);
+// Senator.belongsToMany(RecommendSenator, { through: RecommendResult });
 // Product.belongsToMany(Cart, { through: CartItem });
 // Order.belongsTo(User);
 // User.hasMany(Order);

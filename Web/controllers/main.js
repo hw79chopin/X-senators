@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const Bill = require('../models/bill');
 const BillsProposer = require('../models/billsProposer');
 const RecommendResult = require('../models/recommendResult');
+const RecommendSenator = require('../models/recommendSenator');
 const SponSenator = require('../models/sponSenator');
 const http = require('http');
 const bodyParser = require('body-parser');
@@ -26,8 +27,8 @@ exports.getGallery = (req, res, next) => {
                 pageTitle: "21대 국회의원 둘러보기",
                 path: '/gallery',
                 senatorsInfo: senatorsInfo
+            })
         })
-    })
 };
 
 
@@ -55,6 +56,7 @@ exports.postUserInterest = (req, res, next) => {
 
 exports.getRecommendResult = (req, res, next) => {
     let senatorOutput = {};
+    let userVector = [];
     let userInterestID = '';
     let senatorsIdString = '';
     let senator_info = {};
@@ -77,6 +79,7 @@ exports.getRecommendResult = (req, res, next) => {
         })
         .then(parsedBody => {
             senatorOutput = parsedBody[['message']];
+            userVector = parsedBody[['vector']];
             const senatorsId = Object.keys(parsedBody['message']);
             senatorsIdString = senatorsId.join(",")
             senatorsId.forEach((val, index) => {
@@ -91,18 +94,38 @@ exports.getRecommendResult = (req, res, next) => {
                     senator_info = senatorInfo;
                     RecommendResult.create({
                         userInterestID: userInterestID,
+                        userVector: userVector,
                         SenatorID: senatorsIdString
                     })
                         .then(result => {
-                            res.render('recommend-result', {
-                                pageTitle: "당신의 국회의원은!?!",
-                                path: '/userInput',
-                                senators: senator_info,
-                                similarity: senatorOutput,
-                                senatorsIdString: senatorsIdString,
-                                userInterestID: userInterestID
+                            RecommendResult.findAll({
+                                limit:1,
+                                where: {userInterestID : userInterestID},
+                                order:[['id','DESC']]
+                            })
+                            .then(lastRecord => {
+                                for (var i=0; i < senatorsId.length; i++) {
+                                    RecommendSenator.create({
+                                        recommendResultsId: lastRecord[0]['id'],
+                                        senatorsId: senatorsId[i]
+                                    })
+                                }
+                                res.render('recommend-result', {
+                                    pageTitle: "당신의 국회의원은!?!",
+                                    path: '/userInput',
+                                    senators: senator_info,
+                                    similarity: senatorOutput,
+                                    senatorsIdString: senatorsIdString,
+                                    userInterestID: userInterestID,
+                            })
+                            })
+                            .catch(function (err) {
+                                console.log(err);
                             });
                         })
+                        .catch(function (err) {
+                    console.log(err);
+                });
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -112,6 +135,53 @@ exports.getRecommendResult = (req, res, next) => {
             console.log(err);
         })
 };
+
+exports.getSenatorInfoSimilarBills = (req, res, next) => {
+    const senatorId = req.params.senatorId;
+    var senatorInfo = {};
+    Senator.findByPk(senatorId)
+        .then(senatorInfo => {
+            senatorInfo = senatorInfo;
+            UserInterest.findAll({
+                where: { USER_ID: req.user.id }, order: ['id']
+            })
+                .then(interests => {
+                    userInterestID = parseInt(interests[interests.length - 1].id);
+                    userInputId = interests[interests.length - 1].id;
+                    return userInputId
+                })
+                .then(userInputId => {
+                    RecommendResult.findAll({
+                        where: { userInterestId: userInputId }
+                    })
+                        .then(results => {
+                            userVector = results[results.length - 1]['userVector'];
+                            const options = {
+                                uri: 'http://127.0.0.1:5000/similar_bills',
+                                method: 'POST',
+                                body: { 'userVector': userVector, 'senatorId': senatorId },
+                                json: true
+                            };
+                            return request(options)
+                        })
+                        .then(bills_id => {
+                            bills_id = Object.keys(bills_id['message']);
+                            Bill.findAll({
+                                where: { id: bills_id },
+                            })
+                                .then(bills => {
+                                    res.render('senator-info', {
+                                        pageTitle: "의원 상세정보",
+                                        senatorInfo: senatorInfo,
+                                        path: '/userInput',
+                                        bills: bills
+                                    })
+                                })
+                        })
+                })
+                .catch(err => console.log(err));
+        }
+        )};
 
 exports.getSenatorInfo = (req, res, next) => {
     const senatorId = req.params.senatorId;

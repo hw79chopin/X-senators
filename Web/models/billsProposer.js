@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 const BillsProposer = sequelize.define('billsProposer', {
-    senator_id: Sequelize.INTEGER,
+    snt_id: Sequelize.INTEGER,
     bill_id: Sequelize.STRING,
 }, {
     timestamps: false

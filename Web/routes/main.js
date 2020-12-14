@@ -15,6 +15,8 @@ router.get('/recommend-result', mainController.getRecommendResult);
 
 router.get('/senator-info/:senatorId', mainController.getSenatorInfo);
 
+router.get('/senator-info-similar-bills/:senatorId', mainController.getSenatorInfoSimilarBills);
+
 router.get('/sponsor-senator/:senatorId', mainController.getSponsorSenator);
 
 router.post('/add-user-interest', mainController.postUserInterest);

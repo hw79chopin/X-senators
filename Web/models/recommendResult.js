@@ -9,7 +9,7 @@ const RecommendResult = sequelize.define('recommendResult', {
     primaryKey: true
   },
   userInterestID: Sequelize.STRING,
-  SenatorID: Sequelize.STRING,
+  userVector: Sequelize.STRING
 }, {
   timestamps: false
 });
