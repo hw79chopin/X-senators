@@ -1,4 +1,4 @@
-<h1 align="center"><strong>🔎 X-senators (반려동물 간식 추천시스템)</strong></h3>
+<h1 align="center"><strong>🔎 X-senators (국회의원 추천 Web)</strong></h3>
 
 `#python` `#NLP` `#word2vec` `#Flask` `#ngrok`
 
