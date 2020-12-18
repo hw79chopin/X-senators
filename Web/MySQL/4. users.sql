@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS users (
+    `id` INT AUTO_INCREMENT,
+    `EMAIL` VARCHAR(100),
+    `PASSWORD` VARCHAR(100),
+    CONSTRAINT userPK PRIMARY KEY(id),
+    CONSTRAINT userAK UNIQUE(EMAIL)
+);
+
+INSERT INTO users(id,EMAIL,PASSWORD) VALUES (1,'test@test.com','$2a$12$afg35v8j/G434tflkrfdnv0s90djfnk5sddfe64u');
