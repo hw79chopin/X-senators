@@ -51,6 +51,7 @@ $ pip install pymysql numpy pandas genism flask sklearn
 
 ## 3-3) 필요 라이브러리 설치 (MySQL)
 - [Web] => [MySQL] 폴더에 들어가면 9개의 query문들이 있다.
+- 쿼리 문들을 순서대로 실행해서 테이블들과 데이터를 생성해준다.
 - 파일명 `순서대로` 실행하셔야 에러가 뜨지 않는다. (순서대로 하지 않으면 FK 설정 때문에 에러가 난다.)
 
 ## 3-4) Word2vec, Fasttext 모델 학습하기
